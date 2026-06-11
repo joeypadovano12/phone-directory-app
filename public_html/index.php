@@ -1,7 +1,7 @@
 <?php
 // Students: replace "Matt" below with your own name.
 // You only need to change it here, and the title/header will update automatically.
-$siteOwner = "Matt"; // <----
+$siteOwner = "Joey"; // <----
 
 // array used to build Table of Contents to the folders used for this course
 // most won't lead anywhere eventful until the work is implemented
