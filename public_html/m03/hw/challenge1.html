@@ -94,6 +94,39 @@ Notes:
             2. Set the body margin to 0 and hide the overflow
             3. Fix the margins, page height, and scroll bar in page-content
         */
+        
+        body {
+        margin: 0;
+        overflow: hidden;
+        }
+
+        header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4rem;
+        background: #0f172a;
+        color: white;
+        }
+
+        footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3rem;
+        background: #0f172a;
+        color: white;
+        }
+
+        main {
+        height: calc(100vh - 7rem);
+        margin-top: 4rem;
+        margin-bottom: 3rem;
+        overflow: auto;
+        }
+
     </style>
 </body>
 
