@@ -54,7 +54,7 @@ Notes:
         </ul>
     </nav>
     <!-- Edit your UCID here -->
-    <header>Header Section (mt85)</header>
+    <header>Header Section (jp2397)</header>
     <!-- Don't make any other edits to the HTML -->
     <nav>
         <button>Previous</button>
@@ -120,6 +120,42 @@ Notes:
             2. Track the active slide using an index variable
             3. Change the active class on button clicks
         */
+
+        const buttons = document.querySelectorAll("body > nav button");
+        const prevButton = buttons[0];
+        const nextButton = buttons[1];
+        const panels = document.querySelectorAll(".panel"); 
+        let currentIndex = 0;
+
+        function showPanel(index) {
+            panels.forEach(panel => panel.classList.remove("is-active"));
+            panels[index].classList.add("is-active");
+        }
+
+        if (panels.length > 0) {
+            showPanel(currentIndex);
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener("click", function () {
+                currentIndex++;
+                if (currentIndex >= panels.length) {
+                    currentIndex = 0;
+                }
+                showPanel(currentIndex);
+            });
+        }
+
+        if (prevButton) {
+            prevButton.addEventListener("click", function () {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = panels.length - 1;
+                }
+                showPanel(currentIndex);
+            });
+        }
+
     </script>
 
     <style>
@@ -133,6 +169,47 @@ Notes:
             2. Force the carousel container to fill screen spaces
             3. center active panel and hide all non-active carousel panels
         */
+
+        body.challenge3 {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .carousel {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-container {
+            width: 100%;
+            flex: 1;
+            position: relative;
+        }
+
+        .panel {
+            display: none; 
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .panel.is-active {
+            display: flex; 
+        }
+
+        header + nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 10px 0;
+        }
+
     </style>
 </body>
 
