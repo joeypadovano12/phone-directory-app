@@ -51,7 +51,7 @@ Notes:
         </ul>
     </nav>
     <!-- Edit your UCID here -->
-    <header>Header Section (mt85)</header>
+    <header>Header Section (jp2397)</header>
     <!-- Don't make any other edits to the HTML -->
     <div class="container">
         <aside id="left-sidebar">
@@ -127,6 +127,26 @@ Notes:
             1. add event listeners
             2. adjeust content width for each scenario
         */
+        const leftButton = document.querySelector("#left-sidebar button"); 
+        const leftPanel = document.querySelector("#left-sidebar");
+        const rightButton = document.querySelector("#right-sidebar button"); 
+        const rightPanel = document.querySelector("#right-sidebar");
+        const layout = document.querySelector(".container");
+
+        if (leftButton && leftPanel && layout) {
+            leftButton.addEventListener("click", function () {
+                leftPanel.classList.toggle("is-collapsed");
+                layout.classList.toggle("left-collapsed");
+            });
+        }
+
+        if (rightButton && rightPanel && layout) {
+            rightButton.addEventListener("click", function () {
+                rightPanel.classList.toggle("is-collapsed");
+                layout.classList.toggle("right-collapsed");
+            });
+        }
+
     </script>
 
     <style>
@@ -139,6 +159,42 @@ Notes:
             1. pin the header and fill the rest of the screen with content
             2. make 2 sidebars with 15% width when open
         */
+        body.challenge2 {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 15% 1fr 15%; 
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .container.left-collapsed {
+            grid-template-columns: 0fr 1fr 15%;
+        }
+
+        .container.right-collapsed {
+            grid-template-columns: 15% 1fr 0fr;
+        }
+
+        .container.left-collapsed.right-collapsed {
+            grid-template-columns: 0fr 1fr 0fr;
+        }
+
+        #left-sidebar.is-collapsed, #right-sidebar.is-collapsed {
+            overflow: visible; 
+            white-space: nowrap;
+        }
+
+        #left-sidebar, #right-sidebar { position: relative; }
+        #left-sidebar button, #right-sidebar button { position: absolute; z-index: 10; }
+        #left-sidebar.is-collapsed ul, #right-sidebar.is-collapsed ul { display: none; }
+        #right-sidebar.is-collapsed button { right: 0; }
+        
     </style>
 </body>
 
