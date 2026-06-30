@@ -19,6 +19,13 @@ if (empty($diff)) {
     // Assigned should check for "self" if a valid format/value isn't provided.
     // Start validations
     // can edit here
+    //
+    // UCID: jp2397
+    // Date: 6/30/26
+    // Plan:
+    // 1. Build and HTML post form for task, due, assigned, and self as the safe fallback
+    // 2. Ensure that required fields are not invalid, changing $is_valid as necessary 
+    // 
     // End validations
 
     
