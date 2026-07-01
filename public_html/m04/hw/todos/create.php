@@ -28,7 +28,19 @@ if (empty($diff)) {
     // 
     // End validations
 
-    
+    if(empty(trim($task))){
+        echo "<p style='color:red;'>Error: Task name cannot be empty.</p>";
+        $is_valid = false;
+    }
+
+    if(empty(trim($due))){
+        echo "<p style='color:red;'>Error: Due date is required.</p>";
+        $is_valid = false;
+    }
+
+    if(empty(trim($assigned))){
+        $assigned = "self";
+    }
     
     if ($is_valid) {
         /*
