@@ -92,7 +92,7 @@ if (empty($diff)) {
                 <input type="date" id="due" name="due" required/>
             </div> 
             <div>
-                <label for="due">Due Date:</label>
+                <label for="due">Assigned To:</label>
                 <input type="text" id="assigned" name="assigned" value="self"/>
             </div> 
 
