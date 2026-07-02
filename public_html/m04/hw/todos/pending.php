@@ -38,15 +38,15 @@ No limit is required.
 // UCID: jp2397
 // Date: 6/30/26
 // Plan:
-// 1. Complete the SELECT query to fetch incomplete tasks, selecting columns to match the HTMLtable, calculate days_offset,a nd ordering by nearest due date 
+// 1. Complete the SELECT query to fetch incomplete tasks, selecting columns to match the HTMLtable, calculate days_offset,a nd ordering by nearest due date
 
-$query = ""; // edit this
+$query = "SELECT id, task, due, DATEDIFF(due, CURRENT_DATE) as days_offset, assigned FROM M4_Todos WHERE is_complete = 0 ORDER BY due ASC"; // edit this
 $results = [];
 try {
     $stmt = $db->prepare($query);
     $r = $stmt->execute();
     if ($r) {
-        $results = $stmt->fetchAll();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 } catch (PDOException $e) {
     echo "Error fetching pending todos; check the logs (terminal)";
