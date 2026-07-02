@@ -17,13 +17,13 @@ No limit is required.
 // Plan:
 // 1. Complete the SELECT query to fetch only finished tasks, extracing the DATE from the completed timestamp calculating the days_offset, and ordering by most recently due
 
-$query = ""; // edit this
+$query = "SELECT id, task, due, DATE(completed) as completed_date, DATEDIFF(due, DATE(completed)) as days_offset, assigned FROM M4_Todos WHERE is_complete = 1 ORDER BY completed DESC, due DESC"; // edit this
 $results = [];
 try {
     $stmt = $db->prepare($query);
     $r = $stmt->execute();
     if ($r) {
-        $results = $stmt->fetchAll();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 } catch (PDOException $e) {
     echo "Error fetching completed todos; check the logs (terminal)";
