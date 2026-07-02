@@ -13,9 +13,9 @@ if (isset($_POST["id"])) {
     https://phpdelusions.net/pdo
     */
     // Plan:
-    // 1. Complete the UPDATE query using named placeholders to mark a specific task complete, setting the timestamp, and ensuring it is not already finished 
-    $query = ""; // edit this
-    $params = []; // apply mapping
+    // 1. Complete the UPDATE query using named placeholders to mark a specific task complete, setting the timestamp, and ensuring it is not already finished
+    $query = "UPDATE M4_Todos SET is_complete = 1, completed = CURRENT_TIMESTAMP WHERE id = :id AND is_complete = 0"; // edit this
+    $params = [":id" => $id]; // apply mapping
     
     try {
         $stmt = $db->prepare($query);
