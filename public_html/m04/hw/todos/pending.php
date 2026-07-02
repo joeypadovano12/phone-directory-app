@@ -12,6 +12,8 @@ if (isset($_POST["id"])) {
     Add an extra clause to update only if the complete field of the record is not set.
     https://phpdelusions.net/pdo
     */
+    // Plan:
+    // 1. Complete the UPDATE query using named placeholders to mark a specific task complete, setting the timestamp, and ensuring it is not already finished 
     $query = ""; // edit this
     $params = []; // apply mapping
     
