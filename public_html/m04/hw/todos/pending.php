@@ -35,6 +35,11 @@ For Actions, this isn't part of the query and there's nothing special to select 
 Filter the results where the todo item is NOT completed and order the results by those due the soonest.
 No limit is required.
 */
+// UCID: jp2397
+// Date: 6/30/26
+// Plan:
+// 1. Complete the SELECT query to fetch incomplete tasks, selecting columns to match the HTMLtable, calculate days_offset,a nd ordering by nearest due date 
+
 $query = ""; // edit this
 $results = [];
 try {
