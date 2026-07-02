@@ -11,6 +11,12 @@ For the Status part, you'll need to calculate the "days_offset" from the complet
 Filter the results where the todo item is completed and order the results by most recently completed and most recently due.
 No limit is required.
 */
+
+// UCID: jp2397
+// Date: 6/30/26
+// Plan:
+// 1. Complete the SELECT query to fetch only finished tasks, extracing the DATE from the completed timestamp calculating the days_offset, and ordering by most recently due
+
 $query = ""; // edit this
 $results = [];
 try {
