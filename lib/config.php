@@ -10,7 +10,7 @@ if ($ini !== false && isset($ini["DB_URL"]) && trim((string) $ini["DB_URL"]) !==
     $url = trim((string) $ini["DB_URL"]);
     $urlSource = ".env file";
 } else {
-    $envUrl = getenv("DB_URL");
+    $envUrl = "mysql://jp2397:NoOfWD8oBYAL@db.ethereallab.app:3306/jp2397";
     if ($envUrl !== false && trim((string) $envUrl) !== "") {
         $url = trim((string) $envUrl);
     }
