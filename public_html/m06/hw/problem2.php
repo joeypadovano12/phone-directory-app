@@ -52,7 +52,22 @@ function processCars($cars, $arrayNumber) {
     // 1. Set $currentYear using the built in  date() function
     // 2. Loop through the cars array. For each car, calculate the age (current year - car year)
     // 3. Append the new array with original values and new values
-    
+
+    $currentYear = (int)date("Y");
+
+    foreach($cars as $car){
+        $age = $currentYear - $car["year"];
+        $isClassic = $age >= $classic_age;
+
+        $processedCars[] = [
+            "id" => $car["id"],
+            "make" => $car["make"],
+            "model" => $car["model"],
+            "year" => $car["year"],
+            "age" => $age,
+            "isClassic" => $isClassic
+        ];
+    }
 
     // End Solution Edits
     printProblemOutput("New properties output:", $processedCars);
