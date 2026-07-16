@@ -62,7 +62,14 @@ function joinArrays($users, $activities, $arrayNumber) {
 
     $joined = [];
     // Start Solution Edits
-
+    // UCID: jp2397
+    // Date: 7/13/26
+    // Plan:
+    // 1. Loop through each user in the $users array
+    // 2. Loop through each activity in the $activities array
+    // 3. Compare the userId of current user and activity
+    // 4. If they match, combine user and activity data and append it into a $joined array
+    
     // End Solution Edits
     printProblemOutput("Joined output:", $joined);
     echo "</div>";
