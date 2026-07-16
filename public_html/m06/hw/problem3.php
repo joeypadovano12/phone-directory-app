@@ -3,7 +3,7 @@
 // @ts-nocheck
 require_once(__DIR__ . "/base.php");
 
-$ucid = "YOUR_UCID_HERE"; // <-- set your UCID
+$ucid = "jp2397"; // <-- set your UCID
 
 // Don't edit the arrays below, they are used to test your code.
 $a1_users = [
