@@ -1,8 +1,4 @@
-/* 
-UCID: jp239
-Date: 7/13/26
-*/
-
+// UCID: jp239, Date: 7/13/26
 <?php
 function is_logged_in() {
     return isset($_SESSION["user"]);
