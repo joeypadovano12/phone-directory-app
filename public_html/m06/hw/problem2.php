@@ -46,6 +46,13 @@ function processCars($cars, $arrayNumber) {
     $processedCars = [];
     $classic_age = 25;
     // Start Solution Edits
+    // UCID: jp2397
+    // Date: 7/13/26
+    // Plan:
+    // 1. Set $currentYear using the built in  date() function
+    // 2. Loop through the cars array. For each car, calculate the age (current year - car year)
+    // 3. Append the new array with original values and new values
+    
 
     // End Solution Edits
     printProblemOutput("New properties output:", $processedCars);
