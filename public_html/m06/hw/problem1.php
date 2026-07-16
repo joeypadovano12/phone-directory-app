@@ -42,7 +42,12 @@ function processBirds($birds, $arrayNumber) {
 
     $subset = [];
     // Start Solution Edits
-
+    // UCID: jp2397
+    // Date: 7/13/26
+    // Plan:
+    // 1. Iterate through the $birds array using a foreach loop
+    // 2. For each bird, extract the name, color, and region and append them to a new array
+    
     // End Solution Edits
     printProblemOutput("Subset output:", $subset);
     echo "</div>";
