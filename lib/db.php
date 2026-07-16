@@ -1,3 +1,8 @@
+/* 
+UCID: jp239
+Date: 7/13/26
+*/
+
 <?php
 // Keep errors out of the page response and rely on logs/terminal output.
 ini_set('display_errors', 0);
