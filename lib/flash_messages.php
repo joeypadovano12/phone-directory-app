@@ -1,5 +1,5 @@
-// UCID: jp239, Date: 7/13/26
 <?php
+// UCID: jp239, Date: 7/13/26
 function flash($msg = "", $color = "info") {
     if (session_status() !== PHP_SESSION_ACTIVE) {
         error_log("Flash messages require an active session.");

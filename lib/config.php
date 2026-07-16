@@ -1,5 +1,5 @@
-// UCID: jp239, Date: 7/13/26
 <?php
+// UCID: jp239, Date: 7/13/26
 
 $libEnvPath = __DIR__ . DIRECTORY_SEPARATOR . ".env";
 $ini = is_file($libEnvPath) ? parse_ini_file($libEnvPath) : false;
