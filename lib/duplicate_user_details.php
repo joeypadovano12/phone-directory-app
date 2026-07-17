@@ -1,5 +1,5 @@
 <?php
-// UCID: jp239, Date: 7/13/26
+// UCID: jp2397, Date: 7/13/26
 // File: lib/duplicate_user_details.php
 function duplicate_user_detail(PDOException $e, array &$errors): void
 {
