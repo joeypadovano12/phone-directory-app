@@ -8,7 +8,7 @@ function fetch_phone_data($search, $source, &$errors = []){
     else {
         $result = api_get(
             "https://gsmarenaparser.p.rapidapi.com/api/values/clean/getdevices/" . rawurlencode($search),
-            [], // <--- THIS EMPTY ARRAY IS REQUIRED!
+            [],
             ["key_name" => "RAPIDAPI_KEY", "host_name" => "RAPIDAPI_HOST"]
         );
     }
