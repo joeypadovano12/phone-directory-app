@@ -75,6 +75,7 @@ function api_request(string $url, string $method, array $data = [], array $optio
         $curl_options[CURLOPT_POSTFIELDS] = http_build_query($data);
     }
     curl_setopt_array($ch, $curl_options);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
     $body = curl_exec($ch);
     $curl_errno = curl_errno($ch);
