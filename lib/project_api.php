@@ -12,10 +12,10 @@ function fetch_phone_data($search, $source, &$errors = []){
         ["key_name" => "RAPIDAPI_KEY", "host_name" => "RAPIDAPI_HOST"]
         );
     }
-    $decoded = decode_api_response($result, "devices", $errors);
+    $decoded = decode_api_response($result, null, $errors);
     $mapped_phones = [];
-    if (isset($decoded["devices"])){
-        foreach ($decoded["devices"] as $phone){
+    if (is_array($decoded)){
+        foreach ($decoded as $phone){
             $mapped_phones[] = [
                 "phone_brand" => $phone["manufacturer"] ?? "Unknown",
                 "phone_model" => $phone["model"] ?? "Unknown",
