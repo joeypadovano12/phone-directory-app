@@ -1,6 +1,7 @@
 <?php
 // UCID: jp2397, Date: 7/13/26
 require_once(__DIR__ . "/../../lib/app.php");
+require_once(__DIR__ . "/../../lib/project_api.php");
 
 $search = "Apple";
 if (isset($_POST["search"])) {
