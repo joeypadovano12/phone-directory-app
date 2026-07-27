@@ -47,16 +47,9 @@ if (isset($_POST["save"])) {
         ];
 
         try {
-            /*$db = getDB();
-            $stmt = $db->prepare(
-                "UPDATE Companies
-                 SET name = :name, type = :type, region = :region
-                 WHERE id = :id"
-            );
-            $stmt->execute($data);*/
             update("project_phones", $data, ["id"], ["debug"=>true]);
             flash("Phone updated", "success");
-            header("Location: " . project_url("admin/list_phones.php"));
+            header("Location: " . project_url("admin/edit_phone.php?id=$id"));
             exit;
         } catch (PDOException $e) {
             error_log("Update phone failed: " . $e->getMessage());
@@ -75,7 +68,7 @@ try {
 } catch (PDOException $e) {
     error_log("Load phone for edit failed: " . $e->getMessage());
     flash("Unable to load that phone.", "danger");
-    header("Location: " . project_url("admin/list_phone.php"));
+    header("Location: " . project_url("admin/list_phones.php"));
     exit;
 }
 if (!$phone) {
@@ -112,6 +105,6 @@ if (!$phone) {
         </form>
     </main>
     <?php render_flash_messages(); ?>
-<?php render_scripts(); ?>
+    <?php render_scripts(); ?>
 </body>
 </html>

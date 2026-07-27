@@ -41,7 +41,7 @@ if ($phone === null) {
             <div class="card-body">
                 <h1 class="card-title"><?php echo htmlspecialchars($phone["phone_brand"] . " " . $phone["phone_model"]); ?></h1>
 
-                <dl class="row mt-4">
+                <dl class="row">
                     <dt class="col-sm-3">Brand</dt>
                     <dd class="col-sm-9"><?php echo htmlspecialchars((string) ($phone["phone_brand"] ?? "Unknown")); ?></dd>
 
