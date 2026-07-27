@@ -20,8 +20,10 @@ function fetch_phone_data($search, $source, &$errors = []){
                 $mapped_phones[] = [
                     "phone_brand" => $phone["manufacturer"] ?? "Unknown",
                     "phone_model" => $phone["model"] ?? "Unknown",
-                    "screen_size" => $phone["displaysize"] ?? "Unknown",
-                    "camera_megapixels" => $phone["main_camera_mp"] ?? "Unknown"
+                    "screen_size" => substr($phone["displaySize_raw"] ?? "Unknown", 0, 45),
+                    "camera_megapixels" => substr($phone["mainCameraSpecs_raw"] ?? "Unknown", 0, 45),
+                    "api_id" => $phone["id"] ?? md5(($phone["manufacturer"] ?? "") . ($phone["model"] ?? "")),
+                    "is_api" => 1
                 ];
             }
         }

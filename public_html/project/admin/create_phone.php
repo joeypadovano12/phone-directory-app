@@ -2,6 +2,7 @@
 // public_html/project/admin/create_phone.php
 require_once(__DIR__ . "/../../../lib/app.php");
 require_once(__DIR__ . "/../../../lib/project_api.php");
+require_once(__DIR__ . "/../../../lib/db_helpers.php");
 require_role("Admin");
 
 $errors = [];
@@ -102,7 +103,7 @@ if ($rows && empty($errors)) {
         exit;
     } catch (Throwable $e) {
         error_log("Phone insert helper failed: " . $e->getMessage());
-        flash("Unable to save the phone records.", "danger");
+        flash("CRASH REASON: " . $e->getMessage(), "danger");
     }
     /*try {
         $db = getDB();
@@ -171,16 +172,14 @@ flash_errors($errors);
             </form>
         </section>
 
-        <section data-form-mode-panel="create" <?php if ($active_form !== "create") {
-                                                    echo " hidden";
-                                                } ?>>
+        <section data-form-mode-panel="create">
             <form method="post">
                 <h2>Create Manually</h2>
                 <label for="brand">Brand</label>
                 <input id="brand" name="phone_brand" required>
 
                 <label for="model">Model</label>
-                <input id="model" name="phpne_model" required>
+                <input id="model" name="phone_model" required>
 
                 <label for="screen">Screen Size</label>
                 <input id="screen" name="screen_size" maxlength="50">
