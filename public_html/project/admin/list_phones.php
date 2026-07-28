@@ -87,7 +87,9 @@ try {
                         <td>
                             <a href="view_phone.php?id=<?php echo urlencode($phone["id"]); ?>">View</a> |
                             <a href="edit_phone.php?id=<?php echo urlencode($phone["id"]); ?>">Edit</a> |
-                            <a href="delete_phone.php?id=<?php echo urlencode($phone["id"]); ?>">Delete</a>
+                            <form method="POST" action="delete_phone.php?id=<?php echo urlencode($phone["id"]); ?>" style="display:inline;">
+                                <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer; padding:0; font:inherit;">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
