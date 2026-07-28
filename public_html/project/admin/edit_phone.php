@@ -1,13 +1,17 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // public_html/project/admin/edit_phone.php
 require_once(__DIR__ . "/../../../lib/app.php");
+require_once(__DIR__ . "/../../../lib/db_helpers.php");
 require_role("Admin");
 
 $errors = [];
 $id = (int)($_GET["id"] ?? 0);
 if ($id <= 0) {
     flash("Missing phone id", "danger");
-    header("Location: " . project_url("admin/list_phones.php"));
+    header("Location: list_phones.php");
     exit;
 }
 
@@ -38,20 +42,20 @@ if (isset($_POST["save"])) {
 
     if (empty($errors)) {
         $data = [
-            ":id" => $id,
-            ":phone_brand" => $updated_values["phone_brand"],
-            ":phone_model" => $updated_values["phone_model"],
-            ":screen_size" => $updated_values["screen_size"],
-            ":camera_megapixels" => $updated_values["camera_megapixels"],
+            "id" => $id,
+            "phone_brand" => $updated_values["phone_brand"],
+            "phone_model" => $updated_values["phone_model"],
+            "screen_size" => $updated_values["screen_size"],
+            "camera_megapixels" => $updated_values["camera_megapixels"],
 
         ];
 
         try {
             update("project_phones", $data, ["id"], ["debug"=>true]);
             flash("Phone updated", "success");
-            header("Location: " . project_url("admin/edit_phone.php?id=$id"));
+            header("Location: edit_phone.php?id=$id");
             exit;
-        } catch (PDOException $e) {
+        } catch (Throwable $e) {
             error_log("Update phone failed: " . $e->getMessage());
             $errors[] = "Unable to update phone.";
         }
@@ -68,12 +72,12 @@ try {
 } catch (PDOException $e) {
     error_log("Load phone for edit failed: " . $e->getMessage());
     flash("Unable to load that phone.", "danger");
-    header("Location: " . project_url("admin/list_phones.php"));
+    header("Location: list_phones.php");
     exit;
 }
 if (!$phone) {
     flash("Phone not found", "danger");
-    header("Location: " . project_url("admin/list_phones.php"));
+    header("Location: list_phones.php");
     exit;
 }
 ?>

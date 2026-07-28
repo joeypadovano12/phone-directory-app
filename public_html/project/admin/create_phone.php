@@ -99,44 +99,12 @@ if ($rows && empty($errors)) {
         if ($duplicates > 0) {
             flash("Skipped $duplicates duplicate phone record(s).", "warning");
         }
-        header("Location: " . project_url("admin/list_phones.php"));
+        header("Location: list_phones.php");
         exit;
     } catch (Throwable $e) {
         error_log("Phone insert helper failed: " . $e->getMessage());
         flash("CRASH REASON: " . $e->getMessage(), "danger");
     }
-    /*try {
-        $db = getDB();
-        $stmt = $db->prepare(
-            "INSERT INTO Companies (symbol, name, type, region, currency, is_api)
-             VALUES (:symbol, :name, :type, :region, :currency, :is_api)"
-        );
-
-        foreach ($rows as $row) {
-            try {
-                $stmt->execute($row);
-                $saved++;
-            } catch (PDOException $e) {
-                if ((int)($e->errorInfo[1] ?? 0) === 1062) {
-                    $duplicates++;
-                    continue;
-                }
-                throw $e;
-            }
-        }
-
-        if ($saved > 0) {
-            flash("Saved $saved company record(s).", "success");
-        }
-        if ($duplicates > 0) {
-            flash("Skipped $duplicates duplicate company record(s).", "warning");
-        }
-        header("Location: " . project_url("admin/list_companies.php"));
-        exit;
-    } catch (PDOException $e) {
-        error_log("Create companies failed: " . $e->getMessage());
-        flash("Unable to save the company records.", "danger");
-    }*/
 }
 
 flash_errors($errors);
@@ -157,13 +125,11 @@ flash_errors($errors);
         <h1>Create Phone</h1>
 
         <div aria-label="Phone creation mode" role="group">
-            <button data-form-mode-button="fetch" type="button">Search The API</button>
-            <button data-form-mode-button="create" type="button">Create Manually</button>
+            <button type="button" data-form-mode-button="fetch">Search The API</button>
+            <button type="button" data-form-mode-button="create">Create Manually</button>
         </div>
 
-        <section data-form-mode-panel="fetch" <?php if ($active_form !== "fetch") {
-                                                    echo " hidden";
-                                                } ?>>
+        <section data-form-mode-panel="fetch" <?php if ($active_form !== "fetch") { echo "hidden"; } ?>>
             <form method="post">
                 <h2>Search The API</h2>
                 <label for="search">Search text</label>
@@ -172,7 +138,7 @@ flash_errors($errors);
             </form>
         </section>
 
-        <section data-form-mode-panel="create">
+        <section data-form-mode-panel="create" <?php if ($active_form !== "create") { echo "hidden"; } ?>>
             <form method="post">
                 <h2>Create Manually</h2>
                 <label for="brand">Brand</label>
@@ -194,25 +160,27 @@ flash_errors($errors);
     <?php render_flash_messages(); ?>
 <?php render_scripts(); ?>
     <script>
-        const phoneFormButtons = document.querySelectorAll("[data-form-mode-button]");
-        const phoneFormPanels = document.querySelectorAll("[data-form-mode-panel]");
+            const phoneFormButtons = document.querySelectorAll("[data-form-mode-button]");
+            const phoneFormPanels = document.querySelectorAll("[data-form-mode-panel]");
 
-        function showPhoneForm(mode) {
-            phoneFormPanels.forEach(function(panel) {
-                panel.hidden = panel.dataset.formModePanel !== mode;
-            });
+            function showPhoneForm(mode) {
+               phoneFormPanels.forEach(function(panel) {
+                    const matches = panel.dataset.formModePanel === mode;
+                    panel.hidden = !matches;
+                    panel.style.display = matches ? "block" : "none";
+                });
+                phoneFormButtons.forEach(function(button) {
+                    button.setAttribute("aria-pressed", button.dataset.formModeButton === mode ? "true" : "false");
+                });
+            }
+
             phoneFormButtons.forEach(function(button) {
-                button.setAttribute("aria-pressed", button.dataset.formModeButton === mode ? "true" : "false");
+                button.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    showPhoneForm(button.dataset.formModeButton);
+                });
             });
-        }
-
-        phoneFormButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-                showPhoneForm(button.dataset.formModeButton);
-            });
-        });
-
-        showPhoneForm("<?php echo $active_form; ?>");
+            showPhoneForm("<?php echo $active_form ?? 'fetch'; ?>");
     </script>
 </body>
 

@@ -1,39 +1,47 @@
 <?php
 // public_html/project/view_phone.php
 require_once(__DIR__ . "/../../lib/app.php");
+require_once(__DIR__ . "/../../lib/db_helpers.php");
+
 
 $id = (int)($_GET["id"] ?? 0);
 if ($id <= 0) {
     flash("Missing phone id.", "danger");
-    header("Location: " . project_url("list_phones.php"));
+    header("Location: list_phones.php");
     exit;
 }
 
 $phone = null;
 try {
-    $phone = select(
+    $db = getDB();
+    $stmt = $db->prepare(
         "SELECT id, phone_brand, phone_model, screen_size,
         camera_megapixels, is_api, created, modified
          FROM project_phones
          WHERE id = :id
-         LIMIT 1",
-        ["id" => $id]
+         LIMIT 1"
     );
-} catch (Throwable $e) {
+    $stmt->execute([":id" => $id]);
+    $phone = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
     error_log("Phone lookup failed: " . $e->getMessage());
-    flash("The phone details could not be loaded.", "danger");
-    header("Location: " . project_url("list_phones.php"));
+    flash("DB Error: " . $e->getMessage(), "danger");
+    header("Location: list_phones.php");
     exit;
 }
-if ($phone === null) {
+if (empty($phone)) {
     flash("Phone not found.", "warning");
-    header("Location: " . project_url("list_phones.php"));
+    header("Location: list_phones.php");
     exit;
 }
 ?>
 <!doctype html>
 <html lang="en">
-<head><?php render_head($phone["phone_brand"] . " " . $phone["phone_model"]); ?></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo htmlspecialchars($phone["phone_brand"] . " " . $phone["phone_model"]); ?></title>
+</head>
 <body>
     <?php render_nav(); ?>
     <main class="container py-4">
@@ -66,7 +74,9 @@ if ($phone === null) {
 
                 <?php if (has_role("Admin")): ?>
                     <a class="btn btn-warning" href="<?php echo project_url("admin/edit_phone.php?id=" . $phone["id"]); ?>">Edit</a>
-                    <a class="btn btn-danger" href="<?php echo project_url("admin/delete_phone.php?id=" . $phone["id"]); ?>">Delete</a>
+                    <form method="POST" action="<?php echo project_url('admin/delete_phone.php?id=' . $phone['id']); ?>" style="display: inline-block;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 <?php endif; ?>
 
                 <a class="btn btn-secondary" href="<?php echo project_url("list_phones.php"); ?>">Back To Phones</a>

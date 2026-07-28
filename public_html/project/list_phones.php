@@ -1,6 +1,6 @@
 <?php
 // public_html/project/admin/list_phones.php
-require_once(__DIR__ . "/../../../lib/app.php");
+require_once(__DIR__ . "/../../lib/app.php");
 
 $phones = [];
 $brand_search = $_GET["brand_search"] ?? "";
