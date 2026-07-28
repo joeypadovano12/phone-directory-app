@@ -129,7 +129,7 @@ flash_errors($errors);
             <button type="button" data-form-mode-button="create">Create Manually</button>
         </div>
 
-        <section data-form-mode-panel="fetch" <?php if ($active_form !== "fetch") { echo "hidden"; } ?>>
+        <section data-form-mode-panel="fetch" <?php if ($active_form !== "create") { echo "hidden"; } ?>>
             <form method="post">
                 <h2>Search The API</h2>
                 <label for="search">Search text</label>
@@ -138,7 +138,7 @@ flash_errors($errors);
             </form>
         </section>
 
-        <section data-form-mode-panel="create" <?php if ($active_form !== "create") { echo "hidden"; } ?>>
+        <section data-form-mode-panel="create" <?php if ($active_form !== "fetch") { echo "hidden"; } ?>>
             <form method="post">
                 <h2>Create Manually</h2>
                 <label for="brand">Brand</label>
