@@ -7,7 +7,7 @@ $allowed_return_pages = [
     "list_phones.php" => project_url("list_phones.php"),
     "admin/list_phones.php" => project_url("admin/list_phones.php"),
 ];
-$return_to = $allowed_return_pages["list_phones.php"];
+$return_to = $allowed_return_pages["admin/list_phones.php"];
 if (isset($_GET["return_to"]) && is_string($_GET["return_to"])) {
     $requested_return_to = $_GET["return_to"];
     if (isset($allowed_return_pages[$requested_return_to])) {
