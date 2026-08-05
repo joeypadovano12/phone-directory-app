@@ -26,6 +26,7 @@ $requested_return = $_POST["return_to"] ?? "";
 $allowed_return_paths = [
     project_url("list_phones.php"),
     project_url("admin/list_phones.php"),
+    project_url("admin/all_saved_phones.php"),
     project_url("view_phone.php"),
     $requested_return
 ];
@@ -65,6 +66,9 @@ if (!in_array($new_is_saved, [0, 1], true)) {
 }
 
 $user_id = get_user_id();
+if (has_role("Admin") && !empty($_POST["target_user_id"])){
+    $user_id =  (int) $_POST["target_user_id"];
+}
 
 try {
     $db = getDB();
