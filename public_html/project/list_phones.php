@@ -85,6 +85,12 @@ try {
                         <td><?php echo $source_label; ?></td>
                         <td>
                             <a href="view_phone.php?id=<?php echo urlencode($phone["id"]); ?>">View</a>
+                            <form method="POST" action="<?php echo project_url('internal/toggle_saved_phone.php'); ?>" style="display:inline;">
+                                <input type="hidden" name="phone_id" value="<?php echo $phone["id"]; ?>">
+                                <input type="hidden" name="new_is_saved" value="1">
+                                <input type="hidden" name="return_to" value="<?php echo $_SERVER["REQUEST_URI"]; ?>">
+                                <button type="submit" style="background:none; border:none; color:green; text-decoration:underline; cursor:pointer; padding:0;">Save</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
