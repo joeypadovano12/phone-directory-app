@@ -117,6 +117,26 @@ flash_errors($errors);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Phone</title>
+    <script>
+        function togglePhoneForm(mode) {
+            const fetchPanel = document.getElementById("panel-fetch");
+            const createPanel = document.getElementById("panel-create");
+
+            if (mode === 'fetch') {
+                fetchPanel.style.display = "block";
+                fetchPanel.removeAttribute("hidden");
+                
+                createPanel.style.display = "none";
+                createPanel.setAttribute("hidden", "true");
+            } else {
+                createPanel.style.display = "block";
+                createPanel.removeAttribute("hidden");
+                
+                fetchPanel.style.display = "none";
+                fetchPanel.setAttribute("hidden", "true");
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -125,11 +145,11 @@ flash_errors($errors);
         <h1>Create Phone</h1>
 
         <div aria-label="Phone creation mode" role="group">
-            <button type="button" data-form-mode-button="fetch">Search The API</button>
-            <button type="button" data-form-mode-button="create">Create Manually</button>
+            <button type="button" onclick="togglePhoneForm('fetch')">Search The API</button>
+            <button type="button" onclick="togglePhoneForm('create')">Create Manually</button>
         </div>
 
-        <section data-form-mode-panel="fetch" <?php if ($active_form !== "fetch") { echo "hidden"; } ?>>
+        <section id="panel-fetch" <?php if ($active_form !== "fetch") { echo 'hidden style="display:none;"'; } else {echo 'style="display:block;"';} ?>>
             <form method="post">
                 <h2>Search The API</h2>
                 <label for="search">Search text</label>
@@ -138,7 +158,7 @@ flash_errors($errors);
             </form>
         </section>
 
-        <section data-form-mode-panel="create" <?php if ($active_form !== "create") { echo "hidden"; } ?>>
+        <section id="panel-create" <?php if ($active_form !== "create") { echo 'hidden style="display:none;"'; } else {echo 'style="display:block;"';} ?>>
             <form method="post">
                 <h2>Create Manually</h2>
                 <label for="brand">Brand</label>
@@ -158,30 +178,6 @@ flash_errors($errors);
         </section>
     </main>
     <?php render_flash_messages(); ?>
-<?php render_scripts(); ?>
-    <script>
-            const phoneFormButtons = document.querySelectorAll("[data-form-mode-button]");
-            const phoneFormPanels = document.querySelectorAll("[data-form-mode-panel]");
-
-            function showPhoneForm(mode) {
-               phoneFormPanels.forEach(function(panel) {
-                    const matches = panel.dataset.formModePanel === mode;
-                    panel.hidden = !matches;
-                    panel.style.display = matches ? "block" : "none";
-                });
-                phoneFormButtons.forEach(function(button) {
-                    button.setAttribute("aria-pressed", button.dataset.formModeButton === mode ? "true" : "false");
-                });
-            }
-
-            phoneFormButtons.forEach(function(button) {
-                button.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    showPhoneForm(button.dataset.formModeButton);
-                });
-            });
-            showPhoneForm("<?php echo $active_form ?? 'fetch'; ?>");
-    </script>
+    <?php render_scripts(); ?>
 </body>
-
 </html>

@@ -12,7 +12,7 @@ function project_url(string $path = ""): string
 
     // If no path is passed, return the project folder itself.
     if ($path === "") {
-        return "/public_html/project";
+        return "/project";
     }
 
     // If the path already starts at the web root, use it as-is.
@@ -20,6 +20,6 @@ function project_url(string $path = ""): string
         return $path;
     }
 
-    return "/public_html/project/$path";
+    return "/project/$path";
 }
 ?>
