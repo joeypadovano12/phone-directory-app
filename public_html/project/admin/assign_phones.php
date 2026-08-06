@@ -191,7 +191,9 @@ if ($userSearch !== "" || $phoneSearch !== "") {
                                                 name="users[]"
                                                 value="<?php echo (int)$user["id"]; ?>">
                                             <label for="user_<?php echo (int)$user["id"]; ?>">
-                                                <?php echo htmlspecialchars($user["username"]); ?>
+                                                <a href="../public_profile.php?id=<?php echo $user["id"]; ?>">
+                                                    <?php echo htmlspecialchars($user["username"]); ?>
+                                                </a>
                                             </label>
                                         </td>
                                         <td>
