@@ -1,10 +1,11 @@
-## Project Name: (Which Project)
-### Project Summary: (Describe your project)
-### Github Link: (Prod Branch of project Folder)
-### Website Link: (Render.com Prod of project folder)
-### API Link: (the link to the documentation of your chosen API)
-### Your Name:
-### Course/Section/year:
+## Project Name: Phone Directory Project
+### Project Summary: A web application that allows users to search through mobile phones and related
+###                  device specifications using an API to save their devices to their profile.
+### Github Link: https://github.com/joeypadovano12/jp2397-it202-450-m2026/tree/prod/public_html/project
+### Website Link: (https://dashboard.render.com/project/prj-d8jnkck8aovs73d7t0dg)
+### API Link: https://rapidapi.com/controller2042000/api/gsmarenaparser
+### Your Name: Joseph Padovano
+### Course/Section/year: IT202/450/m2026
 
  
  
@@ -13,11 +14,14 @@
 select it to open/view it, then copy that url for the below items -->
 
 - Milestone 1
-  - (add link to milestone1.pdf from milestone1 branch)  
+  - (https://github.com/joeypadovano12/jp2397-it202-450-m2026/blob/Milestone1/docs/milestone01/jp2397_IT202-450-M2026_it202-milestone-1-2026_07-17-2026_23-59-34.pdf)  
+
 - Milestone 2
-  - (add link to milestone2.pdf from milestone2 branch)
+  - https://github.com/joeypadovano12/jp2397-it202-450-m2026/blob/Milestone2/docs/Milestone2/jp2397_IT202-450-M2026_it202-milestone-2-2026_07-28-2026_18-29-32.pdf
+
 - Milestone 3
-  - (add link to milestone3.pdf from milestone3 branch)
+  - https://github.com/joeypadovano12/jp2397-it202-450-m2026/blob/Milestone3/docs/Milestone3/jp2397_IT202-450-M2026_it202-milestone-3-2026_08-07-2026_13-41-46.pdf
+
 - Demo Link
   - (add youtube link to unlisted or public demo) Note you'll need to verify your youtube account to upload videos > 15mins (https://support.google.com/youtube/answer/171664)
   
