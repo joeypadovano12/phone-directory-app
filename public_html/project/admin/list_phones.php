@@ -86,6 +86,21 @@ try {
                         <td><?php echo $source_label; ?></td>
                         <td>
                             <a href="view_phone.php?id=<?php echo urlencode($phone["id"]); ?>">View</a> |
+
+                            <form method="POST" action="../internal/toggle_saved_phone.php" style="display:inline;">
+                                <input type="hidden" name="phone_id" value="<?php echo $phone["id"]; ?>">
+                                <input type="hidden" name="new_is_saved" value="1">
+                                <input type="hidden" name="return_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+                                <button type="submit" style="background:none; border:none; color:green; text-decoration:underline; cursor:pointer; padding:0; font:inherit;">Save</button>
+                            </form> |
+
+                            <form method="POST" action="../internal/toggle_saved_phone.php" style="display:inline;">
+                                <input type="hidden" name="phone_id" value="<?php echo $phone["id"]; ?>">
+                                <input type="hidden" name="new_is_saved" value="0">
+                                <input type="hidden" name="return_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+                                <button type="submit" style="background:none; border:none; color:green; text-decoration:underline; cursor:pointer; padding:0; font:inherit;">Unsave</button>
+                            </form> |
+
                             <a href="edit_phone.php?id=<?php echo urlencode($phone["id"]); ?>">Edit</a> |
                             <form method="POST" action="delete_phone.php?id=<?php echo urlencode($phone["id"]); ?>" style="display:inline;">
                                 <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer; padding:0; font:inherit;">Delete</button>
