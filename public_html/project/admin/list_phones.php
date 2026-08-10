@@ -85,7 +85,7 @@ try {
                         <td><?php echo htmlspecialchars($phone["camera_megapixels"]); ?></td>
                         <td><?php echo $source_label; ?></td>
                         <td>
-                            <a href="view_phone.php?id=<?php echo urlencode($phone["id"]); ?>">View</a> |
+                            <a href="../view_phone.php?id=<?php echo urlencode($phone["id"]); ?>">View</a> |
 
                             <form method="POST" action="../internal/toggle_saved_phone.php" style="display:inline;">
                                 <input type="hidden" name="phone_id" value="<?php echo $phone["id"]; ?>">
