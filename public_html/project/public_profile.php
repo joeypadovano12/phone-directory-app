@@ -32,9 +32,10 @@ if (!$profileUser) {
 $phones = [];
 try {
     $stmt = $db->prepare(
-        "SELECT id, phone_brand, phone_model, screen_size, camera_megapixels
-         FROM project_phones
-         WHERE user_id = :user_id
+        "SELECT p.id, p.phone_brand, p.phone_model, p.screen_size, p.camera_megapixels
+         FROM project_phones p
+         JOIN user_phones up ON p.id = up.phone_id
+         WHERE up.user_id = :user_id
          LIMIT 10"
     );
     $stmt->execute([":user_id" => $user_id]);
