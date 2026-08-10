@@ -23,5 +23,4 @@ select it to open/view it, then copy that url for the below items -->
   - https://github.com/joeypadovano12/jp2397-it202-450-m2026/blob/Milestone3/docs/Milestone3/jp2397_IT202-450-M2026_it202-milestone-3-2026_08-07-2026_13-41-46.pdf
 
 - Demo Link
-  - (add youtube link to unlisted or public demo) Note you'll need to verify your youtube account to upload videos > 15mins (https://support.google.com/youtube/answer/171664)
-  
+  - https://youtu.be/Ijla5U7sahE
