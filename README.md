@@ -1,48 +1,20 @@
-# IT202 Course Site
+# Phone Directory Web Application
 
-## Student Information
+A full-stack web application for searching, viewing, and saving mobile device details. The app pulls live device specifications from an external phone API, stores them in a MySQL database, and allows users to build personalized phone lists for their profiles.
 
-- Name: 
-- Course: IT202
-- Semester: 
-- Year:
-- Instructor: 
+## Features
+* **User Accounts & Roles:** Secure user registration and login system with separate permissions and pages for standard users and admins.
+* **Live API Search:** Connects to the GSMArena API to search for mobile devices and import specs directly into the app database.
+* **Saved Favorites:** Logged-in users can save devices to their personal profile and manage their saved list.
+* **Admin Controls:** Admin users can manually create, edit, or delete phone entries and manage user roles.
 
-## About This Repository
+## Built With
+* **Backend:** PHP, MySQL
+* **Frontend:** HTML5, CSS3, JavaScript
+* **API:** GSMArena REST API (via RapidAPI)
 
-Use this space to describe what this repository is for.
-
-## Folder Overview
-
-- `lib/`: Shared PHP code such as config and database connection helpers
-- `partials/`: Reusable page pieces that can be included in multiple pages
-- `public_html/`: Files that are meant to be accessed in the browser
-- `sql/`: Database scripts, queries, or notes
-
-## Module Work
-
-Use this section to briefly summarize what you completed in each module.
-
-- `m01`: 
-- `m02`: 
-- `m03`: 
-- `m04`: 
-- `m05`: 
-- `m06`: 
-- `m07`: 
-- `m08`: 
-- `m09`: 
-- `m10`: 
-
-## Project
-
-Use this section to describe your course project.
-
-- Project title: 
-- Goal: 
-- Main features: 
-- Current status: 
-
-## Notes
-
-Add any reminders, links, resources, or setup notes that are useful for you.
+## Database Structure
+* `Users` - Stores account details and encrypted passwords.
+* `Roles` & `UserRoles` - Controls whether an account is a standard user or an admin.
+* `project_phones` - Holds phone specifications (brand, model, specs).
+* `user_phones` - Connects users to the specific phones they have saved.
