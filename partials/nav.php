@@ -6,7 +6,6 @@ $isLoggedIn = is_logged_in();
 <link rel="stylesheet" href="/project/styles.css">
 <nav>
     <ul>
-        <li><a href="/index.php">Home</a></li>
         <?php if ($isLoggedIn): ?>
             <li><a href="/project/dashboard.php">Dashboard</a></li>
             <li><a href="/project/profile.php">Profile</a></li>
