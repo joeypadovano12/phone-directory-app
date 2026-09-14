@@ -6,8 +6,6 @@ if (!is_logged_in()) {
     header("Location: login.php");
     exit;
 }
-// Temporary debugging: check the server log to see the current session user shape.
-error_log("Dashboard session user: " . var_export($_SESSION["user"] ?? [], true));
 ?>
 <!doctype html>
 <html lang="en">
