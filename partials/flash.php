@@ -8,7 +8,6 @@
             ?>
             <div class="row justify-content-center">
                 <div class="alert alert-<?php echo $color; ?>" role="alert">
-                    <?php // Temporary prefix for clearer evidence gathering; remove after all milestones are complete. ?>
                     (php) <?php echo $text; ?>
                 </div>
             </div>
